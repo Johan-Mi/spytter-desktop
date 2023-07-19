@@ -66,7 +66,7 @@ receive_spyyt_batch(void *data, size_t size, size_t nmemb, State *state) {
     g_autoptr(JsonReader) reader =
         json_reader_new(json_parser_get_root(parser));
     g_mutex_lock(&state->pending_spyyts_mutex);
-    for (gint i = 0; json_reader_read_element(reader, i); ++i) {
+    for (guint i = 0; json_reader_read_element(reader, i); ++i) {
         json_reader_read_member(reader, "text");
         auto text = json_reader_get_string_value(reader);
         json_reader_end_member(reader);
