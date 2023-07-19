@@ -150,6 +150,7 @@ static void activate(GtkApplication *app, State *state) {
     gtk_grid_attach(GTK_GRID(grid), feed_scroll, 0, 0, 2, 1);
     auto feed = gtk_list_box_new();
     state->feed = feed;
+    gtk_list_box_set_selection_mode(GTK_LIST_BOX(feed), GTK_SELECTION_NONE);
     gtk_widget_set_vexpand(feed, true);
     gtk_container_add(GTK_CONTAINER(feed_scroll), feed);
 
