@@ -8,6 +8,6 @@ run: main
 	./main
 .PHONY: all
 
-compile_flags.txt:
+compile_flags.txt: makefile
 	$(file >$@)
 	$(foreach O,$(CFLAGS),$(file >>$@,$O))
