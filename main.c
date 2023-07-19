@@ -11,9 +11,9 @@
 
 #define auto __auto_type
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(CURL, curl_easy_cleanup);
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CURL, curl_easy_cleanup)
 typedef struct curl_slist CurlSList;
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(CurlSList, curl_slist_free_all);
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CurlSList, curl_slist_free_all)
 
 typedef struct {
     // Fetching is done on a different thread,
@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
         .fetch_curl = fetch_curl,
         .post_curl = post_curl,
         .pending_spyyts = g_ptr_array_new(),
-        .pending_spyyts_mutex = {},
+        .pending_spyyts_mutex = {0},
         .feed = NULL,
     };
 

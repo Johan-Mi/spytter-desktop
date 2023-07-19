@@ -1,4 +1,4 @@
-CFLAGS = $(shell pkg-config --cflags gtk+-3.0 json-glib-1.0) -O3 -Wall -Wextra
+CFLAGS = $(shell pkg-config --cflags gtk+-3.0 json-glib-1.0) -O3 -Wall -Wextra -Wpedantic -Wno-keyword-macro -Wno-gnu-auto-type
 LDFLAGS = $(shell pkg-config --libs gtk+-3.0 json-glib-1.0 libcurl)
 
 all: main
