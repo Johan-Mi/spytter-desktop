@@ -185,8 +185,9 @@ int main(int argc, char *argv[]) {
         .feed = NULL,
     };
 
-    g_autoptr(GtkApplication) app =
-        gtk_application_new("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+    g_autoptr(GtkApplication) app = gtk_application_new(
+        "com.github.johan_mi.spytter_desktop", G_APPLICATION_DEFAULT_FLAGS
+    );
     g_signal_connect(app, "activate", G_CALLBACK(activate), &state);
 
     auto fetch_thread = g_thread_new("fetch", (GThreadFunc)fetch, &state);
