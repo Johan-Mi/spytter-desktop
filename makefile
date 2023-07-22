@@ -6,7 +6,7 @@ all: main
 
 run: main
 	./main
-.PHONY: all
+.PHONY: run
 
 compile_flags.txt: makefile
 	$(file >$@)
