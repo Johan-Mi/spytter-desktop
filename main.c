@@ -62,7 +62,7 @@ receive_spyyt_batch(void *data, size_t size, size_t nmemb, State *state) {
     auto byte_count = size * nmemb;
 
     g_autoptr(JsonParser) parser = json_parser_new();
-    json_parser_load_from_data(parser, data, byte_count, NULL);
+    json_parser_load_from_data(parser, data, (gssize)byte_count, NULL);
     g_autoptr(JsonReader) reader =
         json_reader_new(json_parser_get_root(parser));
     g_mutex_lock(&state->pending_spyyts_mutex);
@@ -124,7 +124,7 @@ static void post_spyyt(GtkWidget *widget, State *state) {
     auto result = curl_easy_perform(curl);
     if (result != CURLE_OK) {
         auto root_window = gtk_widget_get_parent(grid);
-        auto flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+        GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
         auto dialog = gtk_message_dialog_new(
             GTK_WINDOW(root_window), flags, GTK_MESSAGE_ERROR,
             GTK_BUTTONS_CLOSE, "Failed to send spyyt: %s",
